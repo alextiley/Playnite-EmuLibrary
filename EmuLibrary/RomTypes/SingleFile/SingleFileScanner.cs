@@ -121,11 +121,13 @@ namespace EmuLibrary.RomTypes.SingleFile
 
                             var baseFileName = StringExtensions.GetPathWithoutAllExtensions(Path.GetFileName(file.Name));
                             var gameName = StringExtensions.NormalizeGameName(baseFileName);
+                            var registerRomPath = _emuLibrary.Settings.AlwaysRegisterRomPaths;
 
                             yield return new GameMetadata()
                             {
                                 Source = EmuLibrary.SourceName,
                                 Name = gameName,
+                                Roms = registerRomPath ? new List<GameRom>() { new GameRom(gameName, _playniteAPI.Paths.IsPortable ? file.FullName.Replace(_playniteAPI.Paths.ApplicationPath, Playnite.SDK.ExpandableVariables.PlayniteDirectory) : file.FullName) } : new List<GameRom>(),
                                 IsInstalled = false,
                                 GameId = info.AsGameId(),
                                 Platforms = new HashSet<MetadataProperty>() { new MetadataNameProperty(mapping.Platform.Name) },

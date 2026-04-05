@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              x:Class="EmuLibrary.Settings.SettingsView"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
-             xmlns:elrt="clr-namespace:EmuLibrary.RomTypes" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:elrt="clr-namespace:EmuLibrary.RomTypes"
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600"
              Padding="2,0,2,4">
@@ -166,6 +166,11 @@
                 </CheckBox>
                 <CheckBox IsChecked="{Binding UseWindowsCopyDialogInFullscreenMode, Mode=TwoWay}" Margin="0,0,0,10" ToolTip="Game installs will be performed natively by Windows. The Copy&#x0a;File dialog box will be displayed to show installation progress.&#x0a;Please note that enabling this option may cause issues with focus&#x0a;in fullscreen mode.">
                     <TextBlock Text="Show Windows copy dialog in fullscreen mode" TextWrapping="Wrap"/>
+                </CheckBox>
+                <Label Content="Installation" FontWeight="Bold" Margin="0,10,0,0" />
+                <Separator Margin="0,5,0,10" />
+                <CheckBox IsChecked="{Binding AlwaysRegisterRomPaths, Mode=TwoWay}" Margin="0,0,0,10" ToolTip="When enabled, ROM paths will always be registered against games. This allows the Installation Status Updater extension to accurately track rom installation.">
+                    <TextBlock Text="Installation Status Updater Compatibility" TextWrapping="Wrap"/>
                 </CheckBox>
             </StackPanel>
         </ScrollViewer>
