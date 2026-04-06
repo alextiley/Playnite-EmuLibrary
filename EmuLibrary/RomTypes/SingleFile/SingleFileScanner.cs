@@ -18,6 +18,8 @@ namespace EmuLibrary.RomTypes.SingleFile
     {
         private readonly IPlayniteAPI _playniteAPI;
 
+        protected readonly IEmuLibrary _emuLibrary;
+
         // Hack to exclude anything past disc one for games we're not treating as multi-file / m3u but have multiple discs :|
         static private readonly Regex s_discXpattern = new Regex(@"\((?:Disc|Disk) \d+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -27,6 +29,7 @@ namespace EmuLibrary.RomTypes.SingleFile
         public SingleFileScanner(IEmuLibrary emuLibrary) : base(emuLibrary)
         {
             _playniteAPI = emuLibrary.Playnite;
+            _emuLibrary = emuLibrary;
         }
 
         public override IEnumerable<GameMetadata> GetGames(EmulatorMapping mapping, LibraryGetGamesArgs args)
