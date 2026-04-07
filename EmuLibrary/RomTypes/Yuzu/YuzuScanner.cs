@@ -116,7 +116,6 @@ namespace EmuLibrary.RomTypes.Yuzu
                 {
                     Source = EmuLibrary.SourceName,
                     Name = g.Title,
-                    Roms = registerRomPath ? new List<GameRom>() { new GameRom(g.Title, g.ProgramFile) } : new List<GameRom>(),
                     IsInstalled = false,
                     GameId = gameInfo.AsGameId(),
                     Platforms = new HashSet<MetadataProperty>() { new MetadataNameProperty(mapping.Platform.Name) },
